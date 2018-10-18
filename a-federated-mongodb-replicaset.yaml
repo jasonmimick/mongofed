@@ -1,0 +1,34 @@
+---
+apiVersion: mongodb.com/v1
+kind: FederatedMongoDBReplicaSet
+metadata:
+  name: firstfedreplset
+  namespace: mongodb
+spec:
+  members: 7 
+  version: 4.0.0
+  project: cloud-mgr-mongofed-project
+  credentials: cloud-mgr-creds
+  persistent: false
+---
+apiVersion: mongodb.com/v1
+kind: FederatedMongoDBReplicaSetOverride
+metadata:
+  name: firstfedreplsetoverride
+  namespace: mongodb
+spec:
+  overrides:
+  - clusterName: cluster1
+    members: 4
+  - clusterName: cluster2
+    members: 2
+---
+apiVersion: mongodb.com/v1
+kind: FederatedMongoDBReplicaSetPlacement
+metadata:
+  name: firstfedreplsetplacement
+  namespace: mongodb
+spec:
+  clusterNames:
+  - cluster2
+  - cluster1

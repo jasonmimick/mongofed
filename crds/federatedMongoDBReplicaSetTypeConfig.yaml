@@ -1,0 +1,22 @@
+apiVersion: core.federation.k8s.io/v1alpha1
+kind: FederatedTypeConfig
+metadata:
+  name: bars.example.io
+spec:
+  target:
+    version: v1
+    kind: MongoDBReplicaSet
+  namespaced: true
+  comparisonField: Generation
+  propagationEnabled: true
+  template:
+    group: mongodb.com
+    version: v1
+    kind: MongoDBReplicaSet
+  placement:
+    kind: FederatedMongoDBReplicaSetPlacement
+  override:
+    kind: FederatedMongoDBReplicaSetOverride
+  overridePath:
+    - spec
+    - replicas

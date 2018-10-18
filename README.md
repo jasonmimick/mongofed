@@ -130,6 +130,10 @@ TODO
 
 ### Federating the MongoDB CRD's
 
+install crds
+install federated placement and override's
+enable propogation for mongodb crds FederatedTypeConfig
+
 ### Deploying a multi-cluster MongoDB replica set
 
 ### Testing your database
